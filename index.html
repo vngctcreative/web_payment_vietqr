@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo mã QR thanh toán</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-section">
+            <h1>Web tạo mã QR thanh toán siêu nhanh</h1>
+            <div class="form-group">
+                <label for="format">Định dạng mã QR</label>
+                <!-- Các dạng tạo mã QR -->
+                <select id="format">
+                    <option value="print">1. Mã QR, logo và đầy đủ thông tin chuyển khoản</option>
+                    <option value="compact2">2. Mã QR, logo, tên, số tài khoản và số tiền</option>
+                    <option value="compact">3. Mã QR và các logo VietQR, Napas, ngân hàng</option>
+                    <option value="qr_only">4. Chỉ mã QR</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="bankCode">Ngân hàng:</label>
+                <!-- thêm ngân hàng tại đây -->
+                <select id="bankCode">
+                    <option value="VIB">Ngân hàng Quốc Tế (VIB)</option>
+                    <option value="VCB">Ngân hàng Ngoại Thương Việt Nam (VCB)</option>
+                    <option value="TCB">Ngân hàng Kỹ Thương Việt Nam (Techcombank)</option>
+                    <option value="VIT">Ngân hàng Công Thương Việt Nam (VietinBank)</option>
+                    <option value="MBK">Ngân hàng Quân đội (MB Bank)</option>
+                    <option value="CAKE">TMCP Việt Nam Thịnh Vượng - Ngân hàng số CAKE by VPBank</option>
+                    <option value="BID">Ngân hàng Đầu tư và Phát triển Việt Nam (BIDV)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <!-- nhập dữ liệu đầu vào -->
+                <label for="accountName">Tên chủ tài khoản:</label>
+                <input type="text" id="accountName" placeholder="Nhập tên chủ tài khoản ..." required>
+            </div>
+
+            <div class="form-group">
+                <!-- nhập dữ liệu đầu vào -->
+                <label for="accountNumber">Số tài khoản:</label>
+                <input type="text" id="accountNumber" placeholder="Nhập số tài khoản ..." required>
+            </div>
+
+            <div id="optionalFields" class="optional-fields">
+                <div id="amountField" class="form-group">
+                    <!-- nhập dữ liệu đầu vào -->
+                    <label for="amount">Số tiền:</label>
+                    <input type="number" id="amount" placeholder="Nhập số tiền ...">
+                </div>
+                <div id="contentField" class="form-group">
+                    <!-- nhập dữ liệu đầu vào -->
+                    <label for="content">Nội dung chuyển khoản:</label>
+                    <input type="text" id="content" placeholder="Nhập nội dung chuyển khoản ...">
+                </div>
+            </div>
+
+            <div class="checkbox-group">
+                <label><input type="checkbox" id="includeAmount"> Bao gồm số tiền</label>
+                <label><input type="checkbox" id="includeContent"> Bao gồm nội dung</label>
+            </div>
+            <div class="form-group button-group">
+                <button onclick="generateQR()">Tạo mã QR</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup sau khi tạo QR Code -->
+    <div id="qrPopup" class="popup">
+        <div class="popup-content">
+            <span class="popup-close" onclick="closePopup()">&times;</span>
+            <img id="qrImage" src="" alt="VietQR Code">
+        </div>
+    </div>
+</body>
+<script src="/script.js"></script>
+</html>
